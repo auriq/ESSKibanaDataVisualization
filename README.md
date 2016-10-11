@@ -1,5 +1,5 @@
 
-Esentia stream data into Elasticsearch and view it with Kibana.
+Essentia, data visualization with Kibana.
 =
 
 This repository is for a sample how essentia stream data into elasticsearch and view it via kibana.
