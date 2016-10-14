@@ -2,18 +2,18 @@
 Essentia, data visualization with Kibana.
 =
 
-This repository is for a sample how essentia stream data into elasticsearch and view it via kibana.
+This repository illustrates how essentia streams data into Elasticsearch and view it via Kibana.
 
 
-## Environment that this sample is using
+## Environment used in this sample
 
 - amazon ec2
 
-- java8
+- Java8
 
-- elasticsearch 2.3.5
+- Elasticsearch 2.3.5
 
-- kibana 4.5.4
+- Kibana 4.5.4
 
 - aq_tools 1.2.4
 
@@ -24,11 +24,11 @@ This repository is for a sample how essentia stream data into elasticsearch and 
 
 1. Install necessary commands, set up aws s3 keys
 
-1. Start elasticsearch
+1. Start Elasticsearch
 
 1. Run `to-*.sh`
 
-1. Start Kibana and open port for kibana (default setting is usually 5601)
+1. Start Kibana and open port for Kibana (default setting is usually 5601)
 
 1. open http://yourinstanceip:kibanaport with a browser.
 
@@ -42,13 +42,23 @@ This repository is for a sample how essentia stream data into elasticsearch and 
 
 ## Installation & setup
 
+* Java8
+
+	Elasticsearch requires Java8. If you do not have it in your environment, run the following
+
+		$ sudo yum install -y java-1.8.0 java-1.8.0-openjdk-devel
+
+	If you already have Java8, but is set to other version, then run it and choose version8.
+
+		$ sudo /usr/sbin/alternatives --config java
+
 * Elasticsearch
 
 	Pull files from [the official](https://www.elastic.co/downloads/elasticsearch) and uncompress.
 
 		$ wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/zip/elasticsearch/2.3.5/elasticsearch-2.3.5.zip
 		$ unzip elasticsearch-2.3.5.zip
-		$ elasticsearch -d  # start elasticsearch
+		$ elasticsearch -d  # start Elasticsearch
 
 * Kibana
 
@@ -59,12 +69,12 @@ This repository is for a sample how essentia stream data into elasticsearch and 
 		$ tar -xvf kibana-4.5.4-linux-x64.tar
 
 	[Optional] Install kibana's plugin "elastic/sense"
-	(This is not necessary if you have kibana after version 5.)
+	(This is not necessary if you have Kibana after version 5, or if you do not need it.)
 
 		$ cd kibana-4.5.4-linux-x64
 		$ bin/kibana plugin --install elastic/sense
 
-	To start and view kibana via browser
+	To start Kibana and view it via browser
 
 		$ kibana >> /dev/null &  # start (just "kibana" is enough if you are ok with not running as background)
 
@@ -77,11 +87,13 @@ This repository is for a sample how essentia stream data into elasticsearch and 
 
 * AWS Configure (access/secret keys to connect S3 bucket)
 
+	The samples are using data in S3 bucket. In order to run the sample scripts, you need to give access/secret keys information under ~/.aws directory or add key options to `ess select` in sample scripts.
+
+	(Any keys will work since this sample is accessing only public s3 bucket.)
+
 	Setup your S3 key as
 
 		$ aws configure
-
-	Any keys will work since this sample is accessing only public s3 bucket.
 
 	If you do not have awscli in your environment, run this to install
 
