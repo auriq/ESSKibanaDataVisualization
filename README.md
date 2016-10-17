@@ -2,7 +2,7 @@
 Essentia, data visualization with Kibana.
 =
 
-This repository illustrates how essentia streams data into Elasticsearch and view it via Kibana.
+This repository illustrates how Essentia streams data into Elasticsearch and makes it viewable via Kibana.
 
 
 ## Environment used in this sample
@@ -20,24 +20,25 @@ This repository illustrates how essentia streams data into Elasticsearch and vie
 - jq (1.5)
 
 
+## Datasets used in this sample
+
+- `to-elasticsearch-xml.sh` uses "xml" data from AWS S3's open dataset: "datasets.elasticmapreduce"
+
+- `to-elasticsearch-geo.sh` uses csv formatted data from AWS S3's open dataset: "aws-gsod", see more details in [the Official site of GSOD on AWS](https://aws.amazon.com/public-data-sets/gsod/).
+
+
 ## Recommended steps
 
-1. Install necessary commands, set up aws s3 keys
+If this is your first time using Essentia with Elasticsearch and Kibana: follow the "Installation & setup" section below to install the necessary commands and programs, and to set up your AWS S3 keys.
 
-1. Start Elasticsearch
+1. Start Elasticsearch.
 
-1. Run `to-*.sh`
+1. Run one of the scripts `to-*.sh` to load data into Elasticsearch.
 
-1. Start Kibana and open port for Kibana (default setting is usually 5601)
+1. Start Kibana and make sure you have an open port for Kibana (default port setting is usually 5601).
 
-1. open http://yourinstanceip:kibanaport with a browser.
+1. Open http://YourInstanceIP:KibanaPort with a browser. Ex: http://127.0.0.1:5601
 
-
-## Dataset used in this sample
-
-- `to-elasticsearch-xml.sh` uses "xml" data in aws s3 open data "datasets.elasticmapreduce"
-
-- `to-elasticsearch-geo.sh` uses csv file format data in aws s3 open data "aws-gsod", see more details in [the Official site of GSOD on AWS](https://aws.amazon.com/public-data-sets/gsod/).
 
 
 ## Installation & setup
@@ -87,9 +88,9 @@ This repository illustrates how essentia streams data into Elasticsearch and vie
 
 * AWS Configure (access/secret keys to connect S3 bucket)
 
-	The samples are using data in S3 bucket. In order to run the sample scripts, you need to give access/secret keys information under ~/.aws directory or add key options to `ess select` in sample scripts.
+	The samples are using data from S3 buckets. In order to run the sample scripts, you need to setup your AWS access/secret keys' information under ~/.aws directory or add key options to the `ess select` commands in the sample scripts.
 
-	(Any keys will work since this sample is accessing only public s3 bucket.)
+	(Any keys will work since this sample is accessing only public s3 buckets.)
 
 	Setup your S3 key as
 
@@ -99,7 +100,7 @@ This repository illustrates how essentia streams data into Elasticsearch and vie
 
 		$ sudo yum -y install awscli
 
-	Or, set "--aws_access_key" and "--aws_secret_access_key" option for `ess select`.
+	Or, set the "--aws_access_key" and "--aws_secret_access_key" options for `ess select`.
 
 
 
